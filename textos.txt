@@ -1,0 +1,8 @@
+textos = [
+    "Claro! Vou pegar o fardo 1 no corredor 5. Deseja que o comando seja executado?",
+    "Sem problemas, estou aqui para ajudar. Se precisar de alguma coisa, é só me avisar.",
+    "Sim, entendi! Você deseja que eu pegue o fardo 2 do corredor 4, certo?",
+    "Desculpe, mas o armazém só possui corredores numerados de 1 a 5. Por favor, forneça um número de corredor válido.",
+    "Desculpe, mas não posso executar essa ação. As pilhas de carga são numeradas de 1 a 10. Não existe a pilha 11. Por favor, forneça um número de pilha válido.",
+    "Por favor, forneça mais informações sobre o local onde o caminhão está e qual é o fardo que você deseja entregar.",
+    ]

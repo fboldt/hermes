@@ -6,7 +6,8 @@ import os
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 texts = [
-    "Claro! Vou pegar o fardo um no corredor cinco. Deseja que o comando seja executado?",
+    "Of course! I'll pick up bale one in aisle five. Do you wish the command to be carried out?",
+    # "Claro! Vou pegar o fardo um no corredor cinco. Deseja que o comando seja executado?",
     # "Sem problemas, estou aqui para ajudar. Se precisar de alguma coisa, é só me avisar.",
     # "Sim, entendi! Você deseja que eu pegue o fardo dois do corredor quatro, certo?",
     # "Desculpe, mas o armazém só possui corredores numerados de um a cinco. Por favor, forneça um número de corredor válido.",
@@ -23,13 +24,13 @@ def get_file_path():
     file_path = os.path.join(output_dir, f"output_{id}.wav")
     return file_path
 
-'''
+# '''
 tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(device)
 '''
 tts = TTS("tts_models/multilingual/multi-dataset/your_tts").to(device)
 #'''
 tts.tts_to_file(text=text, 
                 speaker_wav="input/francisco.wav", 
-                language="pt-br", 
+                language="en", 
                 file_path=get_file_path())
 

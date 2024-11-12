@@ -5,20 +5,26 @@ from TTS.api import TTS
 import gradio as gr
 import os
 
-devide = "cuda" if torch.cuda.is_available() else "cpu"
+device = "cuda" if torch.cuda.is_available() else "cpu"
 output_dir = "output"
-id = len([name for name in os.listdir('.') if os.path.isfile(name)])+1
 
-def generate_audio(text):
-    tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(device)
+def get_file_path():
+    id = len([name for name in os.listdir('./output/') if os.path.isfile(name)])+1
     file_path = os.path.join(output_dir, f"output_{id}.wav")
-    tts.tts_to_file(text=text, file_path=file_path)
     return file_path
 
-# print(generate_audio("Hello world!"))
+def generate_audio(text, model_name):
+    tts = TTS(model_name).to(device)
+    file_path=get_file_path()
+    tts.tts_to_file(text=text, speaker_wav="input/francisco.wav", language="pt-br", file_path=file_path)
+    return file_path
 
-demo =  gr.Interface(fn=generate_audio, 
-                     inputs=[gr.Text(label="text"),], 
-                     outputs=[gr.Audio(label="audio"),], 
-                     title="Text to Speech") 
+text = "Uma jornada de mil milhas começa com um único passo."
+model_name = "tts_models/multilingual/multi-dataset/your_tts"
+print(generate_audio(text, model_name))
+
+# demo =  gr.Interface(fn=generate_audio, 
+#                      inputs=[gr.Text(label="text"),], 
+#                      outputs=[gr.Audio(label="audio"),], 
+#                      title="Text to Speech") 
 
